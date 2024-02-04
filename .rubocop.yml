@@ -8,7 +8,15 @@ AllCops:
    - "bin/*"
    - "node_modules/**/*"
    - "Gemfile"
-
+  # ↑ここまでカリキュラムで指定されたファイル
+  # ↓ここから手動で追加 ... rubocop導入時に反応したファイル
+   - Rakefile
+   - app/mailers/application_mailer.rb
+   - config.ru
+   - test/application_system_test_case.rb
+   - test/channels/application_cable/connection_test.rb
+   - test/test_helper.rb
+  # ↑ここまで手動で追加
 
 # 1行あたりの文字数をチェックする
 Layout/LineLength:
