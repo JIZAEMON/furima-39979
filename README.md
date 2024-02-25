@@ -43,7 +43,6 @@
 |---|---|---|
 |user|references|null: false, foreign_key: true|
 |item|references|null: false, foreign_key: true|
-|shipping_address|references|null: false, foreign_key: true|
 
 ### Association
 
