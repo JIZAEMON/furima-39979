@@ -28,7 +28,7 @@
 |condition_id|integer|null: false|
 |shipping_charge_payer_id|integer|null: false|
 |sender_prefecture_id|integer|null: false|
-|days_to_ship|date|null: false|
+|days_to_ship_id|integer|null: false|
 |price|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
@@ -59,7 +59,7 @@
 |city|string|null: false|
 |street_number|string|null: false|
 |building_name|string||
-|phone_number|integer|null: false|
+|phone_number|string|null: false|
 |order|references|null: false, foreign_key: true|
 
 ### Association
