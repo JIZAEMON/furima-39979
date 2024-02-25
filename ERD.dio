@@ -22,7 +22,7 @@
                 <mxCell id="37" value=":shipping_charge_payer_id integer" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="16" vertex="1">
                     <mxGeometry y="146" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value=":sender_prefecture_id integer" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="16" vertex="1">
+                <mxCell id="39" value=":prefecture_id integer" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="16" vertex="1">
                     <mxGeometry y="176" width="250" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value=":days_to_ship_id integer" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="16" vertex="1">
