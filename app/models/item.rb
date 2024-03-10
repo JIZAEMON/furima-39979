@@ -15,4 +15,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping_charge_payer
+  belongs_to :prefecture
+
+
 end

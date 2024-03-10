@@ -1,5 +1,5 @@
 class Shipping_charge_payer < ActiveHash::Base
-  #imemsテーブル用のハッシュ:商品の状態
+  #imemsテーブル用のハッシュ:送料負担者
 
   self.data = [
     { id: 1,  name: '---' },
