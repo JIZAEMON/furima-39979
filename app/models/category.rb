@@ -1,4 +1,6 @@
 class Category < ActiveHash::Base
+  #imemsテーブル用のハッシュ:カテゴリー
+
   self.data = [
     { id: 1,  name: '---' },
     { id: 2,  name: 'メンズ' },
