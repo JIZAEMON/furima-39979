@@ -11,6 +11,13 @@ class Item < ApplicationRecord
   validates :price,                     presence: true
   validates :image,                     presence: true
 
+  # アクティブハッシュを使うカラムは数字のみであり、1(初期選択肢の"---")では保存できない
+  validates :category_id,               numericality: { other_than: 1 , message: "can't be blank"}
+  validates :condition_id,              numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_charge_payer_id,  numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id,             numericality: { other_than: 1 , message: "can't be blank"}
+  validates :days_to_ship_id,           numericality: { other_than: 1 , message: "can't be blank"}
+
   # priceに上限と下限を設定
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
