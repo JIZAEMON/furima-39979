@@ -1,4 +1,4 @@
-class Shipping_charge_payer < ActiveHash::Base
+class ShippingChargePayer < ActiveHash::Base
   #imemsテーブル用のハッシュ:送料負担者
 
   self.data = [

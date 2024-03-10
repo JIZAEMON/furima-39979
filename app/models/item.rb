@@ -16,9 +16,11 @@ class Item < ApplicationRecord
   # 半角数字のみを許可
   validates :price, format: { with: /\A[0-9]+\z/, message: "は半角数字のみで入力してください" }
 
+  # アソシエーションを記述
   belongs_to :user
   has_one_attached :image
 
+  # アクティブハッシュの記述
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
