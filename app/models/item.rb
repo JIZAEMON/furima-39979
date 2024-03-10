@@ -9,12 +9,13 @@ class Item < ApplicationRecord
   validates :prefecture_id,             presence: true
   validates :days_to_ship_id,           presence: true
   validates :price,                     presence: true
+  validates :image,                     presence: true
 
-  # 上限と下限を設定
+  # priceに上限と下限を設定
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
-  # 半角数字のみを許可
-  validates :price, format: { with: /\A[0-9]+\z/, message: "は半角数字のみで入力してください" }
+  # priceに半角数字のみを許可
+  validates :price, format: { with: /\A[0-9]+\z/, message: "should be entered in half-width numbers only" }
 
   # アソシエーションを記述
   belongs_to :user
