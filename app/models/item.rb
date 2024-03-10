@@ -16,6 +16,6 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :shipping_charge_payer
   belongs_to :prefecture
-
+  belongs_to :days_to_ship
 
 end
