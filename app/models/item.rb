@@ -11,11 +11,12 @@ class Item < ApplicationRecord
   validates :price,                     presence: true
   validates :image,                     presence: true
 
-  # アクティブハッシュを使うカラムは数字のみであり、1(初期選択肢の"---")では保存できない
+  # アクティブハッシュを使うカラムは数字のみであり、初期選択肢の"---"では保存できない
+  # 初期選択肢はpredecture_id(都道府県名)のみ0、それ以外は1
   validates :category_id,               numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id,              numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_charge_payer_id,  numericality: { other_than: 1 , message: "can't be blank"}
-  validates :prefecture_id,             numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id,             numericality: { other_than: 0 , message: "can't be blank"}
   validates :days_to_ship_id,           numericality: { other_than: 1 , message: "can't be blank"}
 
   # priceに上限と下限を設定
