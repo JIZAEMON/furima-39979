@@ -25,16 +25,15 @@ class Item < ApplicationRecord
   # priceに半角数字のみを許可
   validates :price, format: { with: /\A[0-9]+\z/, message: "should be entered in half-width numbers only" }
 
-  # アソシエーションを記述
+  # 他モデルとのアソシエーションを記述
   belongs_to :user
   has_one_attached :image
 
-  # アクティブハッシュの記述
+  # アクティブハッシュとのアソシエーションを記述
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping_charge_payer
   belongs_to :prefecture
   belongs_to :days_to_ship
-
 end
