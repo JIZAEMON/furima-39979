@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   # deviseに対し特定のキーのパラメーターを許可を強制
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # ログイン時以外はログインページへ強制的に遷移(トップページのindexアクションを除く)
-  before_action :authenticate_user!, only: [:index]
+  # ログイン時以外はログインページへ強制的に遷移
+  before_action :authenticate_user!
 
   private
 
