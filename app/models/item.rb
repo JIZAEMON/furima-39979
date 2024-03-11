@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   # priceに半角数字のみを許可
-  validates :price, format: { with: /\A[0-9]+\z/, message: "should be entered in half-width numbers only" }
+  validates :price, numericality: { only_integer: true }
 
   # 他モデルとのアソシエーションを記述
   belongs_to :user
