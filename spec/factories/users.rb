@@ -9,6 +9,5 @@ FactoryBot.define do
     first_name            {'名てすとテスト'}  #Fakerで日本語の出力方法が不明なので定値
     first_name_kana       {'メイテスト'}      #Fakerで日本語の出力方法が不明なので定値
     birthday              {Faker::Date.between(from: '1930-01-1', to: 1.days.ago)}
-
   end
 end
