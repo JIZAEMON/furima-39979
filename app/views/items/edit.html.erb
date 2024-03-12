@@ -141,7 +141,7 @@ app/assets/stylesheets/items/new.css %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+      <%=link_to 'もどる', item_path(@item.id), class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
@@ -153,7 +153,7 @@ app/assets/stylesheets/items/new.css %>
       <li><a href="#">フリマ利用規約</a></li>
       <li><a href="#">特定商取引に関する表記</a></li>
     </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), item_path(@item.id) %>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
     <p class="inc">
       ©︎Furima,Inc.
     </p>
