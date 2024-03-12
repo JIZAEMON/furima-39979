@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      index_redirect
+      redirect_to action: :show
     else
       render :edit, status: :unprocessable_entity
     end
