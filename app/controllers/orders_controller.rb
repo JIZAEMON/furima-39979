@@ -8,9 +8,9 @@ class OrdersController < ApplicationController
   def create
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
     if @order_shipping_address.valid?
-      redirect_to "https://www.yahoo.co.jp/"#デバッグ用
+      redirect_to root_path#デバッグ用
       @order_shipping_address.save
-      redirect_to root_path
+      redirect_to new_item_path
     else
       redirect_to "https://www.google.co.jp/"#デバッグ用
       render :index, status: :unprocessable_entity
