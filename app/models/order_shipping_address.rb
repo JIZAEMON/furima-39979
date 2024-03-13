@@ -5,7 +5,7 @@ class OrderShippingAddress
   # Orderモデルのカラムを指定
   attr_accessor :user_id, 
                 :item_id
-                
+
   # ShippingAddressモデルのカラムを指定
   attr_accessor :postal_code, 
                 :prefecture, 
@@ -39,6 +39,10 @@ class OrderShippingAddress
 
   # ShippingAddressモデルのアソシエーション用のバリデーション
   validates :order_id,    presence: true
+
+  # アクティブハッシュとのアソシエーションを記述
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
 
   # レコード保存処理
   def save
