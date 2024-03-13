@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
     if @order_shipping_address.valid?
       redirect_to root_path#デバッグ用
-      # @order_shipping_address.save
-      # redirect_to root_path
+      @order_shipping_address.save
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
       render :index, status: :unprocessable_entity
