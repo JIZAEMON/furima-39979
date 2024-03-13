@@ -47,7 +47,8 @@ class OrderShippingAddress
       street_number: street_number, 
       building_name: building_name, 
       phone_number: phone_number,
-      order_id: order.id)
+      order_id: order.id
+    )
   end
 
 end
