@@ -23,6 +23,8 @@ class OrderShippingAddress
     validates :city,              presence: true
     validates :street_number,     presence: true
     validates :phone_number,      presence: true
+    validates :user_id,           presence: true
+    validates :item_id,           presence: true
   
     # 郵便番号の入力制限 : [3桁ハイフン4桁]の半角文字列のみ許可
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "Only half-width strings in the format '3 digits - 4 digits' are allowed" }
