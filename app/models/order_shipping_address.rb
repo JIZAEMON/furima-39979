@@ -1,5 +1,11 @@
 class OrderShippingAddress
+
   include ActiveModel::Model
+
+  # Orderモデルのカラムを指定
+  attr_accessor :user_id, 
+                :item_id
+                
   # ShippingAddressモデルのカラムを指定
   attr_accessor :postal_code, 
                 :prefecture, 
