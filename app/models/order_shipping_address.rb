@@ -22,7 +22,6 @@ class OrderShippingAddress
     validates :prefecture_id,     presence: true
     validates :city,              presence: true
     validates :street_number,     presence: true
-    validates :building_name,     presence: true
     validates :phone_number,      presence: true
   
     # 郵便番号の入力制限 : [3桁ハイフン4桁]の半角文字列のみ許可
