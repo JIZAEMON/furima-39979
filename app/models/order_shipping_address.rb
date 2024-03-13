@@ -12,7 +12,8 @@ class OrderShippingAddress
                 :city, 
                 :street_number, 
                 :building_name, 
-                :phone_number
+                :phone_number,
+                :order_id
 
   # ShippingAddressモデルカラムのバリデーションを指定
 
