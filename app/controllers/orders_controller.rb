@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
 
   def order_shipping_address_params
     params.require(:order_shipping_address).permit(
-      :item_id,
       :postal_code, 
       :prefecture_id, 
       :city, 
