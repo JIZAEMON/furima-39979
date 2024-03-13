@@ -41,8 +41,8 @@ class OrderShippingAddress
   validates :order_id,    presence: true
 
   # アクティブハッシュとのアソシエーションを記述
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefecture
+  # extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to :prefecture
 
   # レコード保存処理
   def save
