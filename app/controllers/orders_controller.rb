@@ -9,11 +9,11 @@ class OrdersController < ApplicationController
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
     if @order_shipping_address.valid?
       redirect_to root_path#デバッグ用
-      @order_shipping_address.save
-      redirect_to root_path
+      # @order_shipping_address.save
+      # redirect_to root_path
     else
       redirect_to new_item_path#デバッグ用
-      render :index, status: :unprocessable_entity
+      # render :index, status: :unprocessable_entity
     end
   end
 
