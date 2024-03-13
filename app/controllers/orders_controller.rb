@@ -27,6 +27,6 @@ class OrdersController < ApplicationController
       :street_number, 
       :building_name,
       :phone_number
-    ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id, item_id: item_id)
   end
 end

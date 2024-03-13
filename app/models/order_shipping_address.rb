@@ -34,13 +34,6 @@ class OrderShippingAddress
     # 都道府県の入力制限 : 初期選択肢の"---"(id=0)では保存できない
     validates :prefecture_id,               numericality: { other_than: 0 , message: "can't be blank"}
   
-  # Orderモデルのアソシエーション用のバリデーション
-  validates :user_id,     presence: true
-  validates :item_id,     presence: true
-
-  # ShippingAddressモデルのアソシエーション用のバリデーション
-  validates :order_id,    presence: true
-
   # レコード保存処理
   def save
     # Orderレコード生成、下記でidを使うために変数に代入
