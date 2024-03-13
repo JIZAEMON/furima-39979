@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def create  
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
-    redirect_to root_path
     if @order_shipping_address.valid?
       @order_shipping_address.save
       redirect_to root_path
