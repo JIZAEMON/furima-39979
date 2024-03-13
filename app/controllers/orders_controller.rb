@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
       :street_number, 
       :building_name,
       :phone_number
-    ).merge(user_id: current_user.id, item_id: item_id)
+    ).merge(user_id: current_user.id)#デバッグ用
+    # ).merge(user_id: current_user.id, item_id: item_id)
   end
 end
