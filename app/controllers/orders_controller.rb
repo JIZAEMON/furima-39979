@@ -12,15 +12,14 @@ class OrdersController < ApplicationController
       # @order_shipping_address.save
       # redirect_to root_path
     else
-      redirect_to new_item_path#デバッグ用
-      # render :index, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
   private
 
   def order_shipping_address_params
-    params.permit(
+    params.require(:order_shipping_address).permit(
       :item_id,
       :postal_code, 
       :prefecture_id, 
