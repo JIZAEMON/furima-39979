@@ -15,7 +15,6 @@ class OrderShippingAddress
                 :phone_number,
                 :order_id
 
-
   # 空欄を許可しない
   validates :postal_code,       presence: true
   validates :prefecture_id,     presence: true
