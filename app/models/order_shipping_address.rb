@@ -40,10 +40,6 @@ class OrderShippingAddress
   # ShippingAddressモデルのアソシエーション用のバリデーション
   validates :order_id,    presence: true
 
-  # アクティブハッシュとのアソシエーションを記述
-  # extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to :prefecture
-
   # レコード保存処理
   def save
     # Orderレコード生成、下記でidを使うために変数に代入
@@ -52,7 +48,7 @@ class OrderShippingAddress
     # ShippingAddressレコード生成
     ShippingAddress.create(
       postal_code: postal_code, 
-      prefecture: prefecture, 
+      prefecture_id: prefecture_id, 
       city: city, 
       street_number: street_number, 
       building_name: building_name, 
