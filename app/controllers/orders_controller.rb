@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     params.permit(
       :item_id,
       :postal_code, 
-      :prefecture, 
+      :prefecture_id, 
       :city, 
       :street_number, 
       :building_name,
