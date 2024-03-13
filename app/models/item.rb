@@ -27,6 +27,9 @@ class Item < ApplicationRecord
 
   # 他モデルとのアソシエーションを記述
   belongs_to :user
+  has_one :order
+
+  # 画像用の記述
   has_one_attached :image
 
   # アクティブハッシュとのアソシエーションを記述
