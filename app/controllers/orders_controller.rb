@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
       # redirect_to root_path
     else
       @item = Item.find(params[:item_id])
+      @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
       render :index, status: :unprocessable_entity
     end
   end
