@@ -8,7 +8,7 @@ class OrderShippingAddress
 
   # ShippingAddressモデルのカラムを指定
   attr_accessor :postal_code, 
-                :prefecture, 
+                :prefecture_id, 
                 :city, 
                 :street_number, 
                 :building_name, 

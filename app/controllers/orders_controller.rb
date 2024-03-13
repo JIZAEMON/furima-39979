@@ -8,13 +8,12 @@ class OrdersController < ApplicationController
   def create
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
     @order_shipping_address.valid?
-    redirect_to root_path #デバッグ用
-    # if @order_shipping_address.valid?
-    #   @order_shipping_address.save
-    #   redirect_to root_path
-    # else
-    #   render :index, status: :unprocessable_entity
-    # end
+    if @order_shipping_address.valid?
+      @order_shipping_address.save
+      redirect_to root_path
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
