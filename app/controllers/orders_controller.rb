@@ -10,10 +10,10 @@ class OrdersController < ApplicationController
     redirect_to root_path
     if @order_shipping_address.valid?
       @order_shipping_address.save
-      # redirect_to root_path
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
-      # render :index, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
