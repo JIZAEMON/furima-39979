@@ -2,24 +2,20 @@ require 'rails_helper'
 
 RSpec.describe OrderShippingAddress, type: :model do
   before do
-
     user1 = FactoryBot.create(:user)  # 出品者想定
     user2 = FactoryBot.create(:user)  # 購入者想定
     item = FactoryBot.create(:item, user_id: user1.id)
     @order_shipping_address = FactoryBot.build(:order_shipping_address, user_id: user2.id, item_id: item.id)
-
   end
 
   context '内容に問題ない場合' do
     it 'すべての値が正しく入力されていれば保存できる' do
       expect(@order_shipping_address).to be_valid
     end
-
     it 'building_nameは空でも保存できる' do
       @order_shipping_address.building_name = ''
       expect(@order_shipping_address).to be_valid
     end
-
   end
 
   context '内容に問題がある場合' do
@@ -110,6 +106,11 @@ RSpec.describe OrderShippingAddress, type: :model do
     end
     it 'phone_numberが全角数字では保存できない' do
       @order_shipping_address.phone_number = '１２３４５６７８９０１'
+      @order_shipping_address.valid?
+      expect(@order_shipping_address.errors.full_messages).to include "Phone number Only half-width numbers between 10 and 11 digits are allowed"
+    end
+    it 'phone_numberがハイフンを含んでいる場合保存できない' do
+      @order_shipping_address.phone_number = '000-0000-0000'
       @order_shipping_address.valid?
       expect(@order_shipping_address.errors.full_messages).to include "Phone number Only half-width numbers between 10 and 11 digits are allowed"
     end
