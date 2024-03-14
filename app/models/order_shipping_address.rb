@@ -24,13 +24,13 @@ class OrderShippingAddress
   validates :user_id,           presence: true
   validates :item_id,           presence: true
 
-  # 郵便番号の入力制限 : [3桁ハイフン4桁]の半角文字列のみ許可
+  # postal_codeの入力制限 : [3桁ハイフン4桁]の半角文字列のみ許可
   validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "Only half-width strings in the format '3 digits - 4 digits' are allowed" }
 
-  # 電話番号の入力制限 : 10桁以上11桁以内の半角数値のみ許可
-  validates :phone_number,format: { with: /\A\d{10,11}\z/, message: "Only half-width numbers between 10 and 11 digits are allowed" }
+  # phone_numberの入力制限 : 10桁以上11桁以内の半角数値のみ許可
+  validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "Only half-width numbers between 10 and 11 digits are allowed" }
 
-  # 都道府県の入力制限 : 初期選択肢の"---"(id=0)では保存できない
+  # prefecture_idの入力制限 : 初期選択肢の"---"(id=0)では保存できない
   validates :prefecture_id,               numericality: { other_than: 0 , message: "can't be blank"}
 
   # レコード保存処理
