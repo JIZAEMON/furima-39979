@@ -36,7 +36,7 @@ class OrderShippingAddress
   # レコード保存処理
   def save
     # Orderレコード生成、下記でidを使うために変数に代入
-    # order = Order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
 
     # ShippingAddressレコード生成
     ShippingAddress.create(
@@ -46,7 +46,7 @@ class OrderShippingAddress
       street_number: street_number, 
       building_name: building_name, 
       phone_number: phone_number,
-      # order_id: order.id
+      order_id: order.id
     )
   end
 
