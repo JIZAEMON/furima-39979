@@ -3,12 +3,11 @@ class OrdersController < ApplicationController
   # 非ログインユーザーをログインページへ遷移
   before_action :authenticate_user!
 
-  # 商品が売却済みでorderを保有している場合、または商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
-  before_action :redirect_to_root_if_item_sold
-  before_action :redirect_to_root_if_seller_viewing
+  # 不適切な場合にトップページへ遷移
+  before_action :redirect_to_root_if_inappropriate
 
   def index
-    @item = Item.find(params[:item_id])
+    item_set
     @order_shipping_address = OrderShippingAddress.new
   end
 
@@ -18,20 +17,24 @@ class OrdersController < ApplicationController
       @order_shipping_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
+      item_set
       render :index, status: :unprocessable_entity
     end
   end
 
   private
-
-  # 商品が売却済みでorderを保有している場合にトップページへ遷移
-  def redirect_to_root_if_item_sold
-    redirect_to root_path if @item.order
+  
+  # URLのitem_idでitemを検索
+  def item_set
+    @item = Item.find(params[:item_id])
   end
 
-  # 商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
-  def redirect_to_root_if_seller_viewing
+  # 不適切な場合にトップページへ遷移
+  def redirect_to_root_if_inappropriate
+    item_set
+    # 商品が売却済みでorderを保有している場合にトップページへ遷移
+    redirect_to root_path if @item.order
+    # 商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
     redirect_to root_path if @item.user == current_user
   end
 
