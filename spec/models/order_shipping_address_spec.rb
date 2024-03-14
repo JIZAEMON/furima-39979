@@ -76,6 +76,13 @@ RSpec.describe OrderShippingAddress, type: :model do
         expect(@order_shipping_address.errors.full_messages).to include "Item can't be blank"
       end
   
+      # token
+      it 'tokenが空だと保存できない' do
+        @order_shipping_address.token = ''
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include "Token can't be blank"
+      end
+
     # 空欄を許可しないバリデーションの終了
     
     # postal_codeの入力制限
