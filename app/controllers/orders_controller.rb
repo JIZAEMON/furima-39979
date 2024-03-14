@@ -2,10 +2,11 @@ class OrdersController < ApplicationController
 
   # ↓非ログインユーザーをログインページへ遷移
   before_action :authenticate_user!
-  # ↓不適切な場合にトップページへ遷移
-  before_action :redirect_to_root_if_inappropriate
   # ↓URLのitem_idでitemを検索し@itemとする
   before_action :item_set
+  # ↓不適切な場合にトップページへ遷移
+  before_action :redirect_to_root_if_inappropriate
+
 
   def index
     # ↓クレジット決済用にPAYJPの公開キーをビューファイルへ渡す
@@ -42,12 +43,8 @@ class OrdersController < ApplicationController
 
   # ↓不適切な場合にトップページへ遷移
   def redirect_to_root_if_inappropriate
-    # ↓@itemの指定
-    item_set
-    # ↓商品が売却済みでorderを保有している場合にトップページへ遷移
-    redirect_to root_path if @item.order
-    # ↓商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
-    redirect_to root_path if @item.user == current_user
+    # ↓商品が売却済みでorderを保有している場合、または商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
+    redirect_to root_path if if @item.order || @item.user == current_user
   end
 
   # ↓formオブジェクトOrderShippingAddress用にパラメータを許可・merge
