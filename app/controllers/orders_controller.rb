@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   before_action :redirect_to_root_if_inappropriate
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     item_set
     @order_shipping_address = OrderShippingAddress.new
   end
