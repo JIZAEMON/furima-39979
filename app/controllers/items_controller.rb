@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      index_redirect
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,9 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user != @item.user
-      index_redirect
-    end
+    redirect_to_root_if_not_seller
+    redirect_to_root_if_item_sold
   end
 
   def update
@@ -39,7 +38,7 @@ class ItemsController < ApplicationController
   def destroy
     if current_user == @item.user
       @item.destroy
-      index_redirect
+      redirect_to root_path
     end
   end
 
@@ -53,8 +52,14 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :introduce, :category_id, :condition_id, :shipping_charge_payer_id, :prefecture_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
 
-  def index_redirect
-    redirect_to action: :index
+  # 閲覧ユーザーが出品ユーザーではない場合にトップページへ遷移
+  def redirect_to_root_if_not_seller
+    redirect_to root_path if current_user != @item.user
+  end
+
+  # 商品が売却済みでorderを保有している場合にトップページへ遷移
+  def redirect_to_root_if_item_sold
+    redirect_to root_path if @item.order
   end
 
 end
