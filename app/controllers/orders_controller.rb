@@ -14,11 +14,12 @@ class OrdersController < ApplicationController
 
   def create  
     @order_shipping_address = OrderShippingAddress.new(order_shipping_address_params)
+    item_set
     if @order_shipping_address.valid?
+      pay_item
       @order_shipping_address.save
       redirect_to root_path
     else
-      item_set
       render :index, status: :unprocessable_entity
     end
   end
@@ -50,4 +51,21 @@ class OrdersController < ApplicationController
       :phone_number
     ).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
+
+  # クレジットカード決済用処理
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      
+      # 商品の値段
+      amount: @item.price,
+
+      # カードトークン
+      card: order_shipping_address_params[:token],
+      
+      # 通貨の種類(日本円)
+      currency: 'jpy'
+    )
+  end
+
 end
