@@ -2,21 +2,24 @@ require 'rails_helper'
 
 RSpec.describe OrderShippingAddress, type: :model do
   before do
-    user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item)
-    @order_shipping_address = FactoryBot.build(:order_shipping_address, user_id: user.id, item_id: item.id)
-    # @order_shipping_address.user_id = user.id
-    # @order_shipping_address.item_id = item.id
+
+    user1 = FactoryBot.create(:user)  # 出品者想定
+    user2 = FactoryBot.create(:user)  # 購入者想定
+    item = FactoryBot.create(:item, user_id: user1.id)
+    @order_shipping_address = FactoryBot.build(:order_shipping_address, user_id: user2.id, item_id: item.id)
+    
   end
 
   context '内容に問題ない場合' do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@order_shipping_address).to be_valid
     end
+
     it 'building_nameは空でも保存できること' do
       @order_shipping_address.building_name = ''
       expect(@order_shipping_address).to be_valid
     end
+
   end
 
   context '内容に問題がある場合' do
@@ -44,6 +47,7 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include "City can't be blank"
       end
+      
 
       # # street_numberカラム
       # it 'street_numberが空だと保存できないこと' do

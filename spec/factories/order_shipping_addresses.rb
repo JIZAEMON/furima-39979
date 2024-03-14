@@ -7,6 +7,6 @@ FactoryBot.define do
     street_number     {Faker::Address.street_address}
     building_name     {Faker::Address.secondary_address}
     phone_number      {"#{sprintf("%011d", rand(0..99999999999))}"}
-    
+
   end
 end
