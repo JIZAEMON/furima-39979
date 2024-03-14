@@ -15,6 +15,9 @@ class OrderShippingAddress
                 :phone_number,
                 :order_id
 
+  # クレジットカード決済のため、token属性を追加
+  attr_accessor :token
+
   # 空欄を許可しない
   validates :postal_code,       presence: true
   validates :prefecture_id,     presence: true
