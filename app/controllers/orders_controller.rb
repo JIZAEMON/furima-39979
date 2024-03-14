@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   # ↓不適切な場合にトップページへ遷移
   def redirect_to_root_if_inappropriate
     # ↓商品が売却済みでorderを保有している場合、または商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
-    redirect_to root_path if if @item.order || @item.user == current_user
+    redirect_to root_path if @item.order || @item.user == current_user
   end
 
   # ↓formオブジェクトOrderShippingAddress用にパラメータを許可・merge
