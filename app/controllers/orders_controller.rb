@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   # 商品が売却済みでorderを保有している場合、または商品の出品者と閲覧ユーザーが同じ場合にトップページへ遷移
-  bedore_action :redirect_to_root_if_item_sold
-  bedore_action :redirect_to_root_if_seller_viewing
+  before_action :redirect_to_root_if_item_sold
+  before_action :redirect_to_root_if_seller_viewing
 
   def index
     @item = Item.find(params[:item_id])
