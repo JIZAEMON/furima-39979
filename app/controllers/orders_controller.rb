@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   # ↓不適切な場合にトップページへ遷移
   before_action :redirect_to_root_if_inappropriate
 
-
   def index
     # ↓クレジット決済用にPAYJPの公開キーをビューファイルへ渡す
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]

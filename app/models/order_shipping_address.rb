@@ -13,7 +13,6 @@ class OrderShippingAddress
                 :street_number, 
                 :building_name, 
                 :phone_number,
-                :order_id
 
   # クレジットカード決済のため、token属性を追加
   attr_accessor :token
