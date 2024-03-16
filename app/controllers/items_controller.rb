@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to_root_if_not_seller
-    redirect_to_root_if_item_sold
+    redirect_to_root_if_inappropriate
   end
 
   def update
@@ -52,14 +51,11 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :introduce, :category_id, :condition_id, :shipping_charge_payer_id, :prefecture_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
 
-  # 閲覧ユーザーが出品ユーザーではない場合にトップページへ遷移
-  def redirect_to_root_if_not_seller
-    redirect_to root_path if current_user != @item.user
+  # ↓不適切な場合にトップページへ遷移
+  def redirect_to_root_if_inappropriate
+    # ↓商品が売却済みでorderを保有している場合、または閲覧ユーザーが出品ユーザーではない場合にトップページへ遷移
+    redirect_to root_path if @item.order || current_user != @item.user
   end
 
-  # 商品が売却済みでorderを保有している場合にトップページへ遷移
-  def redirect_to_root_if_item_sold
-    redirect_to root_path if @item.order
-  end
 
 end
