@@ -19,11 +19,8 @@ class Item < ApplicationRecord
   validates :prefecture_id,             numericality: { other_than: 0 , message: "can't be blank"}
   validates :days_to_ship_id,           numericality: { other_than: 1 , message: "can't be blank"}
 
-  # priceに上限と下限を設定
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-
-  # priceに半角数字のみを許可
-  validates :price, numericality: { only_integer: true }
+  # priceに右記を設定 {半角数字のみ許可, 上限と下限を設定, 整数のみを許可}
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
 
   # 他モデルとのアソシエーションを記述
   belongs_to :user
