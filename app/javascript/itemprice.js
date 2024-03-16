@@ -7,12 +7,12 @@ const item = () => {
 
     // 販売手数料
     const addTaxDom = document.getElementById("add-tax-price");
-    tax = Math.floor(inputValue * 0.1)
+    const tax = Math.floor(inputValue * 0.1)
     addTaxDom.innerHTML = tax
     
     // 販売利益
     const addProfDom = document.getElementById("profit");
-    prof = inputValue - tax
+    const prof = inputValue - tax
     addProfDom.innerHTML = prof
 
   })
